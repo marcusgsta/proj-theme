@@ -1,0 +1,108 @@
+h1, h2, h3, h4, h5, h6 {
+    // margin-top: @magicNumber;
+    // margin-bottom: @magicNumber;
+    margin:0;
+}
+
+h1, h2 {
+    margin: @magicNumber 0 @magicNumber/2 0;
+}
+h3, h4 {
+    margin: @magicNumber/2 0 @magicNumber/2 0;
+}
+
+@fontSizeH1: 2.375em;
+@colorH1BorderBottom: #666;
+@borderSizeH1: 1px;
+
+h1 {
+    .fontSize(@fontSizeH1);
+    font-weight: normal;
+
+    // border-bottom: @borderSizeH1 solid @colorH1BorderBottom;
+    // margin-bottom: @magicNumber - @borderSizeH1;
+}
+
+h1 {
+    // If header below h1, then assume larger margin top
+    & ~ h1,
+    & ~ h2,
+    & ~ h3,
+    & ~ h4,
+    & ~ h5,
+    & ~ h6,
+     {
+        margin-top: @magicNumber * 1.5;
+    }
+}
+
+
+h1 {
+    // Single margin when subheader follows directly
+    & + h2 {
+        // margin-top: @magicNumber;
+    }
+}
+
+/**
+ * Typographic font families to choose from.
+ */
+// Monospace
+@fontFamilyCourier:         "Courier New", Courier, monospace;
+@fontFamilyMonospace:       monospace;
+
+// Serif
+@fontFamilyCambria:         Cambria, Georgia, Times, 'Times New Roman', serif;
+@fontFamilyTimes:           Times, 'Times New Roman', serif;
+@fontFamilyGaramond:        Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", Georgia, "Times New Roman", Times, serif;
+
+// Sans-serif
+@fontFamilyHelvetica:       Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+@fontFamilyCalibri:         Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+@fontFamilyMyriadPro:       MyriadPro-Regular, 'Myriad Pro Regular', MyriadPro, 'Myriad Pro', Helvetica, Arial, sans-serif;
+@fontFamilyHelveticaNeue:   "Helvetica Neue", Helvetica, Arial, sans-serif;
+@fontFamilyArial:           Arial, sans-serif;
+@fontFamilyBodedo:          "bodedo", sans-serif;
+
+/**
+ * Default font-families
+ */
+@fontFamilyHeadings:  @fontFamilyBodedo;
+@fontFamilyBody:      @fontFamilyHelveticaNeue;
+@fontFamilyCode:      @fontFamilyCourier;
+
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: @fontFamilyHeadings;
+}
+h1 {
+    // font-family: Didot;
+    // font-family: "bodedo", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    color: darkcyan;
+}
+
+.font(@fontSize: 100.01%, @fontFamily: @fontFamilyBody) {
+    font: @fontSize/@lineHeight @fontFamily;
+}
+
+body {
+    .font();
+}
+
+body {
+    font-family: fira-sans, sans-serif;
+    font-style: normal;
+    font-weight: 100;
+}
+
+// .footer-column,
+// .sidebar-right h4,
+h3, h4 {
+    letter-spacing: 2px;
+}
+
+p {
+    margin-bottom: @magicNumber;
+}

@@ -1,0 +1,178 @@
+// Default grid, change to fit your requirements.
+@columnWidth:   30;
+@gutterWidth:   10;
+@columns:       24;
+
+// Utility variable, you should never need to modify this
+@gridSystemWidth: @columns * (@columnWidth + @gutterWidth) * 1px;
+
+// Set @totalWidth to 100% for a fluid layout
+//@totalWidth: @gridSystemWidth; // Fixed layout
+
+// Use % for fluid layout
+@totalWidth: 100% / @gridSystemWidth;
+
+
+/**
+ * A small clearfix:
+ * http://stackoverflow.com/questions/211383/what-methods-of-clearfix-can-i-use
+ */
+.clearfix() {
+    &::after {
+        content: "";
+        display: block;
+        clear:both;
+    }
+}
+
+/**
+ * Wrap grid in a container (called .grid).
+ */
+.grid(@maxWidth: 1300px) {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: @maxWidth;
+}
+
+
+
+/**
+ * All columns must be wrapped in a row.
+ */
+.row(@columns: @columns) {
+    display: block;
+
+    width: @totalWidth * (@gridSystemWidth + @gutterWidth);
+
+    margin-left:  -1 * @totalWidth * @gutterWidth / 2;
+    margin-right: -1 * @totalWidth * @gutterWidth / 2;
+
+    .clearfix();
+}
+
+
+
+
+/**
+ * Create a column spanning @col columns.
+ */
+.column(@col, @columns: @columns) {
+    display: inline;
+    float: left;
+    box-sizing: border-box;
+
+    width: @totalWidth * (((@columnWidth + @gutterWidth) * @col ) - @gutterWidth);
+
+    margin-left:  @totalWidth * @gutterWidth / 2;
+    margin-right: @totalWidth * @gutterWidth / 2;
+}
+
+
+ /**
+ * Push a column @offset columns.
+ */
+.push(@offset: 1) {
+    margin-left: @totalWidth * @offset * (@gutterWidth + @columnWidth) + @totalWidth * @gutterWidth / 2;
+ }
+
+
+
+/**
+ * Pull a column left @offset columns.
+ */
+.pull(@offset: 1) {
+    margin-left: -1 * @totalWidth * @offset * (@gutterWidth + @columnWidth) + @totalWidth * @gutterWidth / 2;
+}
+
+
+
+/**
+ * Pull a column right @offset columns.
+ */
+.pull-right(@offset: 1) {
+    margin-right: -1 * @totalWidth * @offset * (@gutterWidth + @columnWidth) + @totalWidth * @gutterWidth / 2;
+}
+
+/**
+ * Show grid.
+ */
+.showGrid(@maxWidth: 1300px, @gridImage) {
+    background: url("@{gridImage}") repeat-y fixed center center;
+    background-size: 100% auto;
+
+    @media (min-width: @maxWidth) {
+        background-size: @maxWidth auto;
+    }
+}
+
+.inner-wrap {
+    @gridWidth: 1300px;
+    @gridImage: "../img/grid/grid950x24x30x10-nomargin.png";
+    // @gridImage: "../img/grid940x12x60x20-nomargin.png";
+
+    .grid(@gridWidth);
+    html.vgrid & {
+        .showGrid(@gridWidth, @gridImage);
+    }
+
+    &.inner-wrap-header {
+        @gridWidth: 100%;
+        .grid(@gridWidth);
+        html.vgrid & {
+            .showGrid(@gridWidth, @gridImage);
+        }
+    }
+}
+
+// Clearfix for .vgrid and .hgrid
+
+html.vgrid .inner-wrap,
+html.hgrid .inner-wrap {
+    // overflow:auto;
+}
+
+// Typography and typographic grid
+
+.showHGrid(@gridImage) {
+
+    .inner-wrap {
+    // background-image: url('../img/grid/horisontal-grid-24.png');
+    background-image: url("@{gridImage}");
+  }
+}
+
+/**
+ * Typographic mixins.
+ */
+    .showHGrid(@gridImage) {
+        background-image: url("@{gridImage}");
+    }
+
+    .font(@fontSize: 100.01%, @fontFamily: @fontFamilyBody) {
+        font: @fontSize/@lineHeight @fontFamily;
+    }
+
+    .fontSize(@fontSize) {
+        font-size: @fontSize;
+        line-height: @lineHeight / unit(@fontSize) * ceil(unit(@fontSize) / @lineHeight);
+    }
+
+html.hgrid .inner-wrap {
+    @gridImage: "../img/grid/magic-number-24.png";
+    .showHGrid(@gridImage);
+}
+
+/**
+ * Magic number for vertical rythm
+ * @magicNumber = @fontSizeBody * @lineHeight
+ */
+@magicNumber:   24px;   /* 16px - 100%/1.5 */
+//@magicNumber:   22px; /* 16px - 100%/1.375 */
+@fontSizeBody:  16px;
+@fontSizeBody:  16px;
+@lineHeight:    (unit(@magicNumber) / unit(@fontSizeBody));
+
+.fontSize(@fontSize) {
+    font-size: @fontSize;
+    line-height: @lineHeight / unit(@fontSize) * ceil(unit(@fontSize) / @lineHeight);
+}

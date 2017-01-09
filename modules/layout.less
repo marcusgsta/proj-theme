@@ -1,0 +1,414 @@
+/*
+* .row
+*/
+
+
+.row {
+    .row();
+}
+
+
+body {
+    .column(24);
+    min-width:400px;
+
+}
+
+.outer-wrap {
+    // .column(24);
+}
+
+.outer-wrap {
+    width:100%;
+}
+
+/** --------------------------------------------------------------
+ *  Logo images
+ */
+.logo-1 {
+    position: absolute;
+    top: 20px;
+    left: 15px;
+    display:none;
+}
+
+
+.site-header {
+    height: @magicNumber * 3;
+}
+
+.site-logo-text {
+    .column(6);
+    // height: @magicNumber * 2;
+}
+
+.site-logo-text a {
+    color:transparent;
+}
+
+.site-logo-text-icon {
+    position: absolute;
+    z-index: 10;
+    top: 8px;
+    left: 10px;
+}
+
+.navbar2 {
+    .column(16);
+    .push(2);
+    height: @magicNumber * 3;
+}
+
+.flash-wrap img {
+    width: 100%;
+    height: 100%;
+}
+
+.flash-wrap {
+    // position:relative;
+    // top: -@magicNumber * 2;
+    // top:0;
+    z-index:-10;
+    background-color: transparent;
+    // .column(16);
+    // .pull(0.25);
+    height:@magicNumber * 10;
+    // margin-top: - @magicNumber * 2;
+}
+
+/*
+* Breadcrumb
+*/
+
+.route- .breadcrumb-wrap {
+    display:none;
+}
+
+/*
+* Main
+*/
+
+.main.has-sidebar-left.has-sidebar-right {
+    .column(8);
+    .push(1.5);
+    padding: 0 8px 0 8px;
+    // .pull(0.25);
+    height:@magicNumber * 16;
+    margin-top: @magicNumber * 2;
+}
+
+.main {
+    margin: @magicNumber * 2 0 @magicNumber * 2 0  ;
+    padding: 0 8px 0 8px;
+}
+
+.sidebar-left {
+    // .column(4);
+    // .push(4.25);
+    .column(5);
+    .push(1.5);
+    // .push(0.25);
+    margin-top: @magicNumber * 4;
+    height:@magicNumber * 10;
+
+}
+
+// .sidebar-left .one{
+//     height:@magicNumber * 4;
+// }
+//
+// .sidebar-left .two{
+//     height:@magicNumber * 4;
+// }
+//
+// .sidebar-left .three{
+//     height:@magicNumber * 4;
+// }
+// .sidebar-left .four{
+//     height:@magicNumber * 4;
+// }
+
+.route- .sidebar-right {
+    // .column(4);
+    // .pull(0.25);
+    .column(4);
+    .push(2);
+    // .pull(0.25);
+
+    // height:@magicNumber * 16;
+    margin-top: @magicNumber * 2;
+}
+
+.block.blog-toc {
+    margin-top: @magicNumber * 2;
+}
+
+.sidebar-right .block {
+    margin-top: @magicNumber * 2;
+}
+
+.sidebar-right .one {
+height:@magicNumber * 7;
+}
+
+.sidebar-right .two {
+    margin-top: @magicNumber * 2;
+    height:@magicNumber * 4;
+}
+
+.next {
+  float:right;
+}
+
+// .route- .sidebar-right .content h4,
+// .route- .sidebar-right .content p {
+//     z-index:10;
+//     position:relative;
+//     // top: -@magicNumber * 8;
+// }
+
+/*
+* Table
+*/
+
+td {
+    width:@magicNumber * 2;
+    height:@magicNumber * 2;
+    border: 2px solid #fff;
+}
+
+/*
+* Footer
+*/
+
+.columns {
+    width:100%;
+}
+
+.footer-column {
+    .column(@columns / 3);
+    text-align: center;
+}
+
+.block.site-footer {
+    .column(@columns);
+    clear:both;
+    text-align:center;
+    ul {
+        // width: 200px;
+        // margin:0 auto;
+    }
+    li {
+        float:left;
+        padding-right:5px;
+
+    }
+}
+
+.outer-wrap-footer {
+    clear:both;
+    width: 100%;
+    // .column(@columns);
+
+}
+
+/*
+* Blogg
+*/
+
+.main.has-sidebar-right {
+    .column(10);
+    .push(4);
+}
+
+.sidebar-right {
+    .column(6);
+}
+
+// .sidebar-right .blog-toc  {
+   .sidebar-right {
+    height:@magicNumber * 16;
+    .column(6);
+}
+
+.block.toc.article-toc {
+    display:none;
+}
+
+
+
+// .block {
+//     .column(24);
+// }
+
+
+
+
+.breadcrumb-wrap {
+    display:none;
+}
+
+/*
+* Theme-selector and About page
+*/
+
+.main {
+    .column(12);
+    .push(6);
+}
+
+
+/*
+* Teman
+*/
+
+.route-theme .next:first-child {
+    display:none;
+}
+
+
+
+// Make it responsive using media queries
+
+/*
+* Same for all pages (footer and .navbar2)
+*/
+
+@media (max-width:650px) {
+    .footer-column {
+        .column(24);
+    }
+    .footer-column-1 {
+        border-bottom:1px dotted khaki;
+        // height: @magicNumber * 8;
+    }
+    .footer-column-2 {
+        border-bottom:1px dotted khaki;
+        // height: @magicNumber * 4;
+    }
+    .footer-column-3 {
+        border-bottom:1px dotted khaki;
+        // height: @magicNumber * 4;
+    }
+}
+
+@media (max-width: 930px) {
+    .navbar2 {
+        display:none;
+    }
+}
+
+/*
+* Blog, styled with .main.has-sidebar-right and .sidebar-right
+*/
+
+@media (max-width:1000px) {
+    .main.has-sidebar-right {
+        .column(12);
+        .push(3);
+    }
+    .sidebar-right {
+        .column(6);
+    }
+}
+
+@media (max-width:800px) {
+    .main.has-sidebar-right {
+        .column(20);
+        .push(2);
+    }
+    .sidebar-right {
+        display:none;
+    }
+}
+
+
+
+/*
+* Index.php styled with .main.has-sidebar-left.has-sidebar-right and
+* .route- .sidebar-right
+*/
+
+// @media (max-width:1000px) {
+//
+//     .route- .sidebar-right {
+//         .column(4);
+//     }
+// }
+
+@media (max-width: 900px) {
+    .route- .sidebar-left {
+        display:none;
+    }
+
+    .route- .main.has-sidebar-left.has-sidebar-right {
+        .column(16);
+        .push(4);
+        margin-bottom: 0;
+    }
+
+    .route- .sidebar-right {
+        .column(16);
+        .push(4);
+    }
+}
+
+@media (max-width:500px) {
+    .route- .main.has-sidebar-left.has-sidebar-right {
+        .column(24);
+    }
+}
+
+
+/*
+* Theme-selector and About page
+*/
+
+@media (max-width: 800px) {
+    // .route-theme-selector .main {
+    .main {
+        .column(18);
+        .push(3);
+    }
+}
+
+@media (max-width: 570px) {
+    // .route-theme-selector .main {
+    .main {
+        .column(20);
+        .push(2);
+    }
+}
+
+
+// @media (max-width: 1150px) {
+//     .pull-left,
+//     .pull-right {
+//         display: none;
+//     }
+// }
+//
+// @media (max-width: 980px) {
+//     .inner-wrap {
+//         margin-left: 8px;
+//         margin-right: 8px;
+//     }
+// }
+//
+// @media (max-width: 800px) {
+//     .info {
+//         .column(6);
+//     }
+// }
+//
+// @media (max-width: 700px) {
+//     .main,
+//     .triptych {
+//         .column(12);
+//     }
+//
+//     .sidebar,
+//     .info {
+//         display: none;
+//     }
+// }
